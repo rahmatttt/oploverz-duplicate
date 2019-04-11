@@ -1,0 +1,10 @@
+body{
+    background-color: gainsboro;
+}
+.block{
+    margin: auto;
+    margin-top: 100px;
+    width: 300px;
+    padding: 5px;
+    max-width: 100%;
+}
