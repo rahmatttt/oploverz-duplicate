@@ -6,11 +6,13 @@ class Admin extends CI_Controller
     {
         # code...
         parent::__construct();
-        
+        $this->load->model('m_anime');
     }
     public function index()
     {
-        
+        $this->load->view('templates/header');
+        $this->load->view('admin/view_anime');
+        $this->load->view('templates/footer');
     }
     
 }
