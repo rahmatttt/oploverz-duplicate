@@ -1,6 +1,3 @@
-        <link rel="stylesheet" href="assets/style/login_style.css">
-    </head>
-<body>
 <div class="text-center block">
     <img src="assets/gambar/logo.png" alt="logo">
     <h1>Admin login</h1>
@@ -35,14 +32,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function(){		
-		$('#check').click(function(){
-			if($(this).is(':checked')){
-				$('#password').attr('type','text');
-			}else{
-				$('#password').attr('type','password');
-			}
-		});
-	});
-</script>
+<script src="assets/script/show_password.js"></script>
