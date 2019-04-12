@@ -4,6 +4,7 @@ class Daftarisi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('url_helper');
         $this->load->model('M_home');
     }
     public function index()
@@ -25,6 +26,6 @@ class Daftarisi extends CI_Controller
         $this->M_home->getNewEpisode();
     }
     public function lastanime(){
-        $this->M_home-> getLastAnime();
+        $this->M_home->getLastAnime();
     }
 }
