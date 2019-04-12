@@ -30,4 +30,8 @@ nav{
 .konten_admin{
     background-color: #fff;
     padding: 10px;
+    overflow-x: scroll;
+}
+.admin_thumb{
+    width: 100px;
 }

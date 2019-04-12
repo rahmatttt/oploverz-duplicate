@@ -8,6 +8,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->helper('url_helper');
         $this->load->model('m_anime');
+        $this->load->model('m_genre');
     }
     public function index()
     {
