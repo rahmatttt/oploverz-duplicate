@@ -29,14 +29,13 @@
                         <th scope="col">No</th>
                         <th scope="col">Gambar</th>
                         <th scope="col">Judul</th>
+                        <th scope="col">Genre</th>
                         <th scope="col">Produser</th>
-                        <th scope="col">Tgl rilis</th>
+                        <th scope="col">Jadwal rilis</th>
                         <th scope="col">Tgl penyiaran</th>
                         <th scope="col">Durasi</th>
                         <th scope="col">Skor</th>
                         <th scope="col">Status</th>
-                        <th></th>
-                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -49,15 +48,26 @@
                         <td><?= $no ?></td>
                         <td><img src="assets/gambar/<?= $row['gambar'] ?>" alt="thumbnail" class="admin_thumb"></td>
                         <td><?= $row['judul_anime'] ?></td>
+                        <td>
+                            <?php
+                            $this->load->model('m_genre');
+                            $genre = $this->m_genre->getGenreByAnime($row['no_anime']);
+                            foreach($genre as $data){
+                                echo $data['nama_genre'].", ";
+                            }
+                            ?>
+                        </td>
                         <td><?= $row['produser'] ?></td>
                         <td><?= $row['jdwl_rilis'] ?></td>
                         <td><?= $row['tgl_penyiaran'] ?></td>
                         <td><?= $row['durasi'] ?></td>
                         <td><?= $row['skor'] ?></td>
                         <td><?= $row['status'] ?></td>
-                        <td><a href="#" class="btn btn-success text-light" title="preview"><span class="oi oi-eye"></span></a></td>
-                        <td><a href="#" class="btn btn-warning text-light" title="edit"><span class="oi oi-pencil"></span></a></td>
-                        <td><a href="#" class="btn btn-danger text-light" title="delete"><span class="oi oi-trash"></span></a></td>
+                        <td>
+                        <a href="#" class="btn btn-success text-light m-1" title="detail"><span class="oi oi-eye"></span></a>
+                        <a href="#" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
+                        <a href="#" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
+                        </td>
                     </tr>
                     <?php
                     $no++;
