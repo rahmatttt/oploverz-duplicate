@@ -4,12 +4,24 @@
 body{
     background-color: gainsboro;
 }
+footer{
+    margin-top: 10px;
+}
+.main-container{
+    min-height: 100vh;
+}
 .block{
     margin: auto;
-    margin-top: 100px;
-    width: 300px;
+    margin-top: 20px 100px;
+    width: 400px;
     padding: 5px;
     max-width: 100%;
+    min-width: 200px;
+    margin-left: -200px;
+    margin-top: -148px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
 }
 
 .logo{
@@ -30,8 +42,30 @@ nav{
 .konten_admin{
     background-color: #fff;
     padding: 10px;
-    overflow-x: scroll;
 }
 .admin_thumb{
     width: 100px;
+}
+
+.user-admin-btn{
+    max-width: 100px;
+    /* border-radius: 20px; */
+    padding: 10px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .konten_admin{
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width: 480px) {
+    .block{
+        width: auto;
+        margin: 30px 20px;
+        height: auto;
+        position: static;
+    }
 }

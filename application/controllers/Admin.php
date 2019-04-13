@@ -23,6 +23,32 @@ class Admin extends CI_Controller
         }
         
     }
+
+    public function delete_anime($no_anime)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->m_anime->delete_anime($no_anime);
+            redirect('admin');
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function edit_anime($no_anime)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $data['title'] = "edit anime";
+            $data['anime'] = $this->m_anime->getDataAnimeByNo($no_anime);
+            $data['genre'] = $this->m_genre->getGenreByAnime($no_anime);
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/edit_anime', $data);
+            $this->load->view('templates/footer');           
+        } else {
+            redirect('login');
+        }
+        
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('admin');

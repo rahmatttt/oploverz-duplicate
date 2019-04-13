@@ -7,10 +7,10 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container main-container">
     <div class="row">
         <div class="col-12">
-            <img src="assets/gambar/logo.png" alt="logo" class="logo">
+            <img src="<?= base_url(); ?>assets/gambar/logo.png" alt="logo" class="logo">
         </div>
     </div>
     <div class="row mt-5 menu_admin">
@@ -44,6 +44,24 @@
                     $no = 1;
                     foreach ($anime as $row) {
                     ?>
+                    <!-- modal delete -->
+                    <div class="modal fade" id="delete<?= $row['no_anime']; ?>" tabindex="-1" role="dialog" aria-labelledby="delete<?= $row['no_anime']; ?>Title" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><span class="p-2 rounded-circle bg-danger text-center text-light"><span class="oi oi-trash pl-1"></span></span> Hapus <?= $row['judul_anime']; ?>?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+                                <a href="<?= base_url(); ?>admin/delete_anime/<?= $row['no_anime']; ?>" class="btn btn-primary">hapus</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end modal delete -->
                     <tr>
                         <td><?= $no ?></td>
                         <td><img src="assets/gambar/<?= $row['gambar'] ?>" alt="thumbnail" class="admin_thumb"></td>
@@ -65,8 +83,8 @@
                         <td><?= $row['status'] ?></td>
                         <td>
                         <a href="#" class="btn btn-success text-light m-1" title="detail"><span class="oi oi-eye"></span></a>
-                        <a href="#" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
-                        <a href="#" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
+                        <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']; ?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
+                        <a href="#" data-target="#delete<?= $row['no_anime'];?>" data-toggle="modal" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
                         </td>
                     </tr>
                     <?php
@@ -78,3 +96,5 @@
         </div>
     </div>
 </div>
+
+<a href="#" class="btn btn-primary rounded-circle user-admin-btn">Go to user view</a>
