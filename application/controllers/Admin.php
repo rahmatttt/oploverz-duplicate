@@ -57,6 +57,7 @@ class Admin extends CI_Controller
                 //     "judul_anime" => $this->input->post('judul', true);
                 //     "judul_anime" => $this->input->post('judul', true);
                 // ];
+                
                 $this->m_anime->update_anime($no_anime);
                 redirect("admin");
             }

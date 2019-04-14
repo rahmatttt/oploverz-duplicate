@@ -19,7 +19,7 @@
             foreach ($anime as $row) {
             ?>
             <h1 class="mt-2"><span class="p-2 rounded-circle bg-warning text-center text-light"><span class="oi oi-pencil pl-1"></span></span> Edit <?= $row['judul_anime']; ?></h1> <hr>
-            <form action="#" method="post" enctype="multipart/form-data" class="form_admin">
+            <form action="" method="post" enctype="multipart/form-data" class="form_admin">
                 <div class="form-group">
                     <label for="judul">Judul Anime</label>
                     <input type="text" class="form-control" id="judul" placeholder="Judul Anime" name="judul" value="<?= $row['judul_anime'] ?>">
