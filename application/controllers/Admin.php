@@ -53,11 +53,6 @@ class Admin extends CI_Controller
                 $this->load->view('admin/edit_anime', $data);
                 $this->load->view('templates/footer');           
             } else {
-                // $data = [
-                //     "judul_anime" => $this->input->post('judul', true);
-                //     "judul_anime" => $this->input->post('judul', true);
-                // ];
-                
                 $this->m_anime->update_anime($no_anime);
                 redirect("admin");
             }

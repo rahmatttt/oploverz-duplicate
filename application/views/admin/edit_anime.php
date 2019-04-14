@@ -113,6 +113,7 @@
                     <input type="file" id="fileGambar" name="gambar" size="20"> <br>
                     <img src="<?=base_url()?>assets/gambar/<?= $row['gambar'] ?>" alt="thumbnail" class="admin_thumb mt-1" id="gambar">
                 </div>
+                <input type="hidden" name="gambar_lama" value="<?= $row['gambar'] ?>">
                 <input class="btn btn-warning text-light" type="submit" value="Edit">
             </form>
             <?php  

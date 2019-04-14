@@ -83,10 +83,11 @@
                         <td><?= $row['status'] ?></td>
                         <td>
                         <a href="#" class="btn btn-success text-light m-1" title="detail"><span class="oi oi-eye"></span></a>
-                        <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']; ?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
+                        <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']?>/<?= $row['gambar']?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
                         <a href="#" data-target="#delete<?= $row['no_anime'];?>" data-toggle="modal" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
                         </td>
                     </tr>
+                    
                     <?php
                     $no++;
                     }

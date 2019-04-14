@@ -15,6 +15,12 @@ class M_anime extends CI_Model
     }
     public function delete_anime($no_anime)
     {
+        $gambar = $this->db->get_where("anime", array('no_anime' => $no_anime))->result_array();
+        foreach ($gambar as $pict) {
+            if ($pict['gambar']!="default_image.png") {
+                unlink("assets/gambar/".$pict['gambar']);
+            }
+        }
         $this->db->where('no_anime',$no_anime);
         $this->db->delete('anime');
     }
@@ -40,7 +46,7 @@ class M_anime extends CI_Model
             $this->db->where('no_anime',$no_anime);
             $this->db->update('anime', $data);
         }
-            else
+        else
         {
             $data = [
                 "judul_anime" => $this->input->post('judul', true),
@@ -55,6 +61,19 @@ class M_anime extends CI_Model
             ];
             $this->db->where('no_anime',$no_anime);
             $this->db->update('anime', $data);
+
+            unlink("assets/gambar/".$this->input->post("gambar_lama",true));
+        }
+        $this->db->where('no_anime',$no_anime);
+        $this->db->delete('genre_meliputi_anime');
+        if ($this->input->post('genre',true)) {
+            foreach ($this->input->post('genre',true) as $check) {
+                $data = [
+                    'no_anime'=>$no_anime,
+                    'no_genre'=>$check
+                ];
+                $this->db->insert('genre_meliputi_anime',$data);
+            }
         }
     }
 }
