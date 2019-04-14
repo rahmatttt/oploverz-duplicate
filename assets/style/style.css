@@ -56,6 +56,17 @@ nav{
     right: 10px;
 }
 
+.form_admin{
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+
+.multi-kolom-4{
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+}
+
 @media screen and (max-width: 1024px) {
     .konten_admin{
         overflow-x: scroll;
@@ -67,5 +78,10 @@ nav{
         margin: 30px 20px;
         height: auto;
         position: static;
+    }
+    .multi-kolom-4{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
     }
 }

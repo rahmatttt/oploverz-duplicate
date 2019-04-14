@@ -13,6 +13,8 @@
     <link href="<?= base_url() ?>assets/style/open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/style/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/script/datatable/datatables.css">
+    <script src="<?= base_url() ?>assets/script/upload.js"></script>
+    <script src="<?= base_url() ?>assets/script/ckeditor/ckeditor/ckeditor.js"></script>
     <script src="<?= base_url() ?>assets/script/datatable/datatables.js"></script>
     <script>
         $(document).ready(function() {
