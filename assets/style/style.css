@@ -67,8 +67,15 @@ nav{
     column-count: 4;
 }
 
+.profil_anime{
+    background-color: gainsboro;
+    padding: 10px;
+}
+
+
+
 @media screen and (max-width: 1024px) {
-    .konten_admin{
+    .konten_data{
         overflow-x: scroll;
     }
 }
@@ -83,5 +90,12 @@ nav{
         -webkit-column-count: 2;
         -moz-column-count: 2;
         column-count: 2;
+    }
+}
+@media screen and (max-width: 360px) {
+    .multi-kolom-4{
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
     }
 }

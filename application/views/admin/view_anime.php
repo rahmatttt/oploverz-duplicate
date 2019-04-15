@@ -22,7 +22,8 @@
     </div>
     <div class="row mt-2 konten_admin">
         <div class="col-12">
-            <a href="#" class="btn btn-primary mb-4">Tambah Anime</a>
+            <a href="<?= base_url() ?>admin/tambah_anime" class="btn btn-primary mb-4">Tambah Anime</a>
+            <div class="konten_data">
             <table class="table table-hover" id="tabel">
                 <thead class="table-primary">
                     <tr>
@@ -49,7 +50,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title"><span class="p-2 rounded-circle bg-danger text-center text-light"><span class="oi oi-trash pl-1"></span></span> Hapus <?= $row['judul_anime']; ?>?</h5>
+                                <h5 class="modal-title"><span class="oi oi-trash text-danger"></span> Hapus <?= $row['judul_anime']; ?>?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -82,8 +83,8 @@
                         <td><?= $row['skor'] ?></td>
                         <td><?= $row['status'] ?></td>
                         <td>
-                        <a href="#" class="btn btn-success text-light m-1" title="detail"><span class="oi oi-eye"></span></a>
-                        <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']?>/<?= $row['gambar']?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
+                        <a href="<?= base_url(); ?>admin/detail_anime/<?= $row['no_anime']?>" class="btn btn-success text-light m-1" title="detail"><span class="oi oi-eye"></span></a>
+                        <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
                         <a href="#" data-target="#delete<?= $row['no_anime'];?>" data-toggle="modal" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
                         </td>
                     </tr>
@@ -94,6 +95,7 @@
                     ?>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>

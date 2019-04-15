@@ -10,6 +10,8 @@ class Admin extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('m_anime');
         $this->load->model('m_genre');
+        $this->load->model('m_episode');
+        $this->load->model('m_link_download');
     }
     public function index()
     {
@@ -39,6 +41,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->has_userdata('admin')) {
             $this->form_validation->set_rules('judul','Judul', 'required');
+            $this->form_validation->set_rules('deskripsi','Deskripsi', 'required');
             $this->form_validation->set_rules('produser','Produser', 'required');
             $this->form_validation->set_rules('jadwal','Jadwal', 'required');
             $this->form_validation->set_rules('tgl_penyiaran','Tanggal Penyiaran', 'required');
@@ -57,6 +60,49 @@ class Admin extends CI_Controller
                 redirect("admin");
             }
             
+        } else {
+            redirect('login');
+        }
+        
+    }
+    
+    public function tambah_anime()
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->form_validation->set_rules('judul','Judul', 'required');
+            $this->form_validation->set_rules('deskripsi','Deskripsi', 'required');
+            $this->form_validation->set_rules('produser','Produser', 'required');
+            $this->form_validation->set_rules('jadwal','Jadwal', 'required');
+            $this->form_validation->set_rules('tgl_penyiaran','Tanggal Penyiaran', 'required');
+            $this->form_validation->set_rules('durasi','Durasi', 'required');
+            $this->form_validation->set_rules('skor','Skor', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $data['title'] = "tambah anime";
+                $data['all_genre'] = $this->m_genre->getAllDataGenre();
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/tambah_anime',$data);
+                $this->load->view('templates/footer');           
+            } else {
+                $this->m_anime->tambah_anime();
+                redirect("admin");
+            }
+            
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function detail_anime($no_anime)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $data['title'] = "detail anime";
+            $data['anime'] = $this->m_anime->getDataAnimeByNo($no_anime);
+            $data['genre'] = $this->m_genre->getGenreByAnime($no_anime);
+            $data['episode'] = $this->m_episode->getEpisodeByAnime($no_anime);
+            $data['jml_episode'] = $this->m_episode->getJumlahEpisodeByAnime($no_anime);
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/detail_anime',$data);
+            $this->load->view('templates/footer');
         } else {
             redirect('login');
         }
