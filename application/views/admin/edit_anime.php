@@ -13,10 +13,17 @@
             <img src="<?= base_url(); ?>assets/gambar/logo.png" alt="logo" class="logo">
         </div>
     </div>
+    <div class="row mt-5 menu_admin">
+        <div class="col-12">
+            <a href="" class="btn btn-outline-primary menu_admin_active">List anime</a>
+            <a href="" class="btn btn-outline-primary">List genre</a>
+            <a href="" class="btn btn-outline-primary">List komentar</a>
+        </div>
+    </div>
     <?php
     foreach ($anime as $row) {
     ?>
-    <div class="row mt-5 konten_admin">
+    <div class="row mt-2 konten_admin">
         <div class="col-3 col-md-1">
             <h1 class="mt-2"><span class="oi oi-pencil text-warning"></span></h1>
         </div>

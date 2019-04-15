@@ -13,10 +13,17 @@
             <img src="<?= base_url(); ?>assets/gambar/logo.png" alt="logo" class="logo">
         </div>
     </div>
+    <div class="row mt-5 menu_admin">
+        <div class="col-12">
+            <a href="" class="btn btn-outline-primary menu_admin_active">List anime</a>
+            <a href="" class="btn btn-outline-primary">List genre</a>
+            <a href="" class="btn btn-outline-primary">List komentar</a>
+        </div>
+    </div>
     <?php 
     foreach ($anime as $row) {
     ?>
-    <div class="row mt-5 konten_admin">
+    <div class="row mt-2 konten_admin">
         <div class="col-3 col-md-1">
             <h1 class="mt-2"><span class="oi oi-eye text-success"></span></h1>
         </div>
@@ -90,7 +97,8 @@
             </div>
             <div class="mt-2">
                 <h6>list episode <?= $row['judul_anime'] ?> :</h6>
-                <div class="konten_data">
+                <a href="<?= base_url() ?>admin/tambah_episode/<?= $row['no_anime'] ?>" class="btn btn-primary">Tambah Episode</a>
+                <div class="konten_data mt-2">
                 <table class="table table-hover" id="tabel">
                     <thead class="table-primary">
                         <tr>
@@ -167,8 +175,16 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?= base_url(); ?>admin/tambah_link/" method="post" id="form-tambah-link">
-                                                                            
+                                            <form action="<?= base_url(); ?>admin/tambah_link/<?= $row['no_anime'] ?>" method="post" id="form-tambah-link">
+                                                <input type="hidden" name="no_episode" value="<?= $row_episode['no_episode'] ?>">
+                                                <div class="form-group">
+                                                    <label for="nama">web download :</label>
+                                                    <input type="text" class="form-control" id="nama" placeholder="web download" name="nama_link">                            
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="link">link download :</label>
+                                                    <input type="text" class="form-control" id="link" placeholder="link download" name="link">                            
+                                                </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -199,7 +215,10 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
-                                                <a href="<?= base_url(); ?>admin/delete_link/<?= $data['no_link']; ?>" class="btn btn-danger">hapus</a>
+                                                <form action="<?= base_url(); ?>admin/delete_link/<?= $data['no_link'] ?>" method="post">
+                                                    <input type="hidden" name="no_anime" value="<?= $row['no_anime'] ?>">
+                                                    <input type="submit" value="Hapus" class="btn btn-danger">
+                                                </form>
                                             </div>
                                             </div>
                                         </div>
@@ -207,7 +226,7 @@
                                     <!-- end modal delete link -->
                                     
                                     <li>
-                                        <a href="<?= $data['link'] ?>" title="<?= $data['link'] ?>"><?= $data['nama_link'] ?> </a>
+                                        <a href="<?= $data['link'] ?>" title="<?= $data['link'] ?>" target="_blank"><?= $data['nama_link'] ?> </a>
                                         <a href="#" data-target="#delete_link<?= $data['no_link']; ?>" data-toggle="modal" class="badge badge-danger" title="delete link"><span class="oi oi-trash"></span></a>
                                     </li>
                                 <?php

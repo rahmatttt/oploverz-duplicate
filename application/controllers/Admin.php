@@ -26,7 +26,7 @@ class Admin extends CI_Controller
         }
         
     }
-
+    //anime
     public function delete_anime($no_anime)
     {
         if ($this->session->has_userdata('admin')) {
@@ -108,7 +108,33 @@ class Admin extends CI_Controller
         }
         
     }
+    //link
+    public function tambah_link($no_anime)
+    {
+        if ($this->session->has_userdata('admin')) {
+            if ($this->input->post('nama_link',true) != "" && $this->input->post('link',true) != "") {
+                $this->m_link_download->tambah_link();
+            }
+            redirect("admin/detail_anime/$no_anime");
+        } else {
+            redirect('login');
+        }
+    }
 
+    public function delete_link($no_link)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->m_link_download->delete_link($no_link);
+            redirect("admin/detail_anime/".$this->input->post('no_anime',true));
+        } else {
+            redirect('login');
+        }
+    }
+    //episode
+    public function tambah_episode()
+    {
+        # code...
+    }
     public function logout()
     {
         $this->session->unset_userdata('admin');
