@@ -12,6 +12,7 @@ class Admin extends CI_Controller
         $this->load->model('m_genre');
         $this->load->model('m_episode');
         $this->load->model('m_link_download');
+        $this->load->model('m_komentar');
     }
     public function index()
     {
@@ -19,7 +20,7 @@ class Admin extends CI_Controller
             $data['title'] = "admin-view_anime";
             $data['anime'] = $this->m_anime->getAllDataAnime();
             $this->load->view('templates/header', $data);
-            $this->load->view('admin/view_anime');
+            $this->load->view('admin/view_anime',$data);
             $this->load->view('templates/footer');
         } else {
             redirect('login');
@@ -183,7 +184,74 @@ class Admin extends CI_Controller
             redirect('login');
         }
     }
-
+    //genre
+    public function view_genre()
+    {
+        if ($this->session->has_userdata('admin')) {
+            $data['title'] = "admin-view_genre";
+            $data['genre'] = $this->m_genre->getAllDataGenre();
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/view_genre', $data);
+            $this->load->view('templates/footer');
+        } else {
+            redirect('login');
+        }
+    }
+    public function tambah_genre()
+    {
+        if ($this->session->has_userdata('admin')) {
+            if ($this->input->post('nama_genre')!="") {
+                $this->m_genre->tambah_genre();
+            }
+            redirect("admin/view_genre");
+        } else {
+            redirect('login');
+        }
+    }
+    public function edit_genre($no_genre)
+    {
+        if ($this->session->has_userdata('admin')) {
+            if ($this->input->post('nama_genre')!="") {
+                $this->m_genre->edit_genre($no_genre);
+            }
+            redirect("admin/view_genre");
+        } else {
+            redirect('login');
+        }
+    }
+    public function delete_genre($no_genre)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->m_genre->delete_genre($no_genre);
+            redirect("admin/view_genre");
+        } else {
+            redirect('login');
+        }
+    }
+    //komentar
+    public function view_komentar()
+    {
+        if ($this->session->has_userdata('admin')) {
+            $data['title'] = "admin-view_komentar";
+            $data['komentar'] = $this->m_komentar->getAllDataKomentar();
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/view_komentar', $data);
+            $this->load->view('templates/footer');
+        } else {
+            redirect('login');
+        }
+    }
+    public function ubah_status_komentar($no_komentar)
+    {
+        if ($this->input->get('status') == "OK") {
+            $new_status = "Blocked";
+        } else {
+            $new_status = "OK";
+        }
+        $this->m_komentar->ubah_status($new_status,$no_komentar);
+        redirect('admin/view_komentar');
+        
+    }
     public function logout()
     {
         $this->session->unset_userdata('admin');

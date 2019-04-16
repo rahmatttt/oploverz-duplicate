@@ -27,7 +27,6 @@
             <table class="table table-hover" id="tabel">
                 <thead class="table-primary">
                     <tr>
-                        <th scope="col">No</th>
                         <th scope="col">Gambar</th>
                         <th scope="col">Judul</th>
                         <th scope="col">Genre</th>
@@ -42,7 +41,6 @@
                 </thead>
                 <tbody>
                     <?php
-                    $no = 1;
                     foreach ($anime as $row) {
                     ?>
                     <!-- modal delete -->
@@ -64,7 +62,6 @@
                     </div>
                     <!-- end modal delete -->
                     <tr>
-                        <td><?= $no ?></td>
                         <td><img src="assets/gambar/<?= $row['gambar'] ?>" alt="thumbnail" class="admin_thumb"></td>
                         <td><?= $row['judul_anime'] ?></td>
                         <td>
@@ -90,7 +87,6 @@
                     </tr>
                     
                     <?php
-                    $no++;
                     }
                     ?>
                 </tbody>
