@@ -15,9 +15,9 @@
     </div>
     <div class="row mt-5 menu_admin">
         <div class="col-12">
-            <a href="" class="btn btn-outline-primary menu_admin_active">List anime</a>
-            <a href="" class="btn btn-outline-primary">List genre</a>
-            <a href="" class="btn btn-outline-primary">List komentar</a>
+            <a href="<?= base_url() ?>admin" class="btn btn-outline-primary menu_admin_active">List anime</a>
+            <a href="<?= base_url() ?>admin/view_genre" class="btn btn-outline-primary">List genre</a>
+            <a href="<?= base_url() ?>admin/view_komentar" class="btn btn-outline-primary">List komentar</a>
         </div>
     </div>
     <?php 
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
-                                    <a href="<?= base_url(); ?>admin/delete_episode/<?= $row_episode['no_episode']; ?>" class="btn btn-danger">hapus</a>
+                                    <a href="<?= base_url(); ?>admin/delete_episode/<?= $row_episode['no_episode']; ?>?thumbnail=<?= $row_episode['thumbnail']; ?>&no_anime=<?= $row['no_anime']; ?>" class="btn btn-danger">hapus</a>
                                 </div>
                                 </div>
                             </div>
@@ -217,8 +217,9 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
                                                 <form action="<?= base_url(); ?>admin/delete_link/<?= $data['no_link'] ?>" method="post">
                                                     <input type="hidden" name="no_anime" value="<?= $row['no_anime'] ?>">
-                                                    <input type="submit" value="Hapus" class="btn btn-danger">
+                                                    <!-- <input type="submit" value="Hapus" class="btn btn-danger"> -->
                                                 </form>
+                                                <a href="<?= base_url(); ?>admin/delete_link/<?= $data['no_link'] ?>?no_anime=<?= $row['no_anime'] ?>" class="btn btn-danger">Hapus</a>
                                             </div>
                                             </div>
                                         </div>
@@ -242,9 +243,8 @@
                                 </video>
                             </td>
                             <td>
-                            
-                            <a href="<?= base_url(); ?>admin/edit_anime/<?= $row['no_anime']?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
-                            <a href="#" data-target="#delete<?= $row['no_anime'];?>" data-toggle="modal" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
+                            <a href="<?= base_url(); ?>admin/edit_episode/<?= $row_episode['no_episode']?>?no_anime=<?= $row['no_anime'] ?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>
+                            <a href="#" data-target="#delete<?= $row_episode['no_episode'];?>" data-toggle="modal" class="btn btn-danger text-light m-1" title="delete"><span class="oi oi-trash"></span></a>
                             </td>
                         </tr>
                         

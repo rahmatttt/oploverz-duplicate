@@ -125,16 +125,65 @@ class Admin extends CI_Controller
     {
         if ($this->session->has_userdata('admin')) {
             $this->m_link_download->delete_link($no_link);
-            redirect("admin/detail_anime/".$this->input->post('no_anime',true));
+            redirect("admin/detail_anime/".$this->input->get('no_anime',true));
         } else {
             redirect('login');
         }
     }
     //episode
-    public function tambah_episode()
+    public function tambah_episode($no_anime)
     {
-        # code...
+        if ($this->session->has_userdata('admin')) {
+            $this->form_validation->set_rules('judul_episode','Judul Episode', 'required');
+            $this->form_validation->set_rules('deskripsi','Deskripsi', 'required');
+            $this->form_validation->set_rules('episode','Episode', 'required');
+            $this->form_validation->set_rules('link_streaming','Link Streaming', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $data['title'] = "tambah episode $no_anime";
+                $data['anime'] = $this->m_anime->getDataAnimeByNo($no_anime);
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/tambah_episode', $data);
+                $this->load->view('templates/footer');           
+            } else {
+                $this->m_episode->tambah_episode($no_anime);
+                redirect("admin/detail_anime/$no_anime");
+            }
+        } else {
+            redirect("login");
+        }
     }
+    public function edit_episode($no_episode)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->form_validation->set_rules('judul_episode','Judul Episode', 'required');
+            $this->form_validation->set_rules('deskripsi','Deskripsi', 'required');
+            $this->form_validation->set_rules('episode','Episode', 'required');
+            $this->form_validation->set_rules('link_streaming','Link Streaming', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $data['title'] = "edit episode $no_episode";
+                $data['anime'] = $this->m_anime->getDataAnimeByNo($this->input->get('no_anime',true));
+                $data['episode'] = $this->m_episode->getEpisodeByNo($no_episode);
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/edit_episode', $data);
+                $this->load->view('templates/footer');           
+            } else {
+                $this->m_episode->edit_episode($no_episode);
+                redirect("admin/detail_anime/".$this->input->get('no_anime',true));
+            }
+        } else {
+            redirect("login");
+        }
+    }
+    public function delete_episode($no_episode)
+    {
+        if ($this->session->has_userdata('admin')) {
+            $this->m_episode->delete_episode($no_episode);
+            redirect('admin/detail_anime/'.$this->input->get('no_anime',true));
+        } else {
+            redirect('login');
+        }
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('admin');

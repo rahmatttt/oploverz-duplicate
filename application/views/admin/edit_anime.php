@@ -15,9 +15,9 @@
     </div>
     <div class="row mt-5 menu_admin">
         <div class="col-12">
-            <a href="" class="btn btn-outline-primary menu_admin_active">List anime</a>
-            <a href="" class="btn btn-outline-primary">List genre</a>
-            <a href="" class="btn btn-outline-primary">List komentar</a>
+            <a href="<?= base_url() ?>admin" class="btn btn-outline-primary menu_admin_active">List anime</a>
+            <a href="<?= base_url() ?>admin/view_genre" class="btn btn-outline-primary">List genre</a>
+            <a href="<?= base_url() ?>admin/view_komentar" class="btn btn-outline-primary">List komentar</a>
         </div>
     </div>
     <?php
