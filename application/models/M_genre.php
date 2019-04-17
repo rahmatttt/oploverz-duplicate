@@ -8,6 +8,12 @@ class M_genre extends CI_Model
         $que = $this->db->get('genre');
         return $que->result_array();
     }
+    public function getGenre13()
+    {
+        $this->db->order_by('nama_genre','asc');
+        $que = $this->db->get('genre',13);
+        return $que->result_array();
+    }
     public function getGenreByAnime($no_anime)
     {
         $que = $this->db->query("SELECT nama_genre FROM genre JOIN genre_meliputi_anime ON genre.no_genre = genre_meliputi_anime.no_genre WHERE genre_meliputi_anime.no_anime = $no_anime");

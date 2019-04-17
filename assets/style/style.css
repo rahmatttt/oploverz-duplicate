@@ -27,8 +27,8 @@ footer{
 .logo{
     margin-top: 50px;
 }
-nav{
-    min-width: min-content;
+nav, footer, genres{
+    min-width: max-content;
 }
 
 .menu_admin{
@@ -39,7 +39,7 @@ nav{
     background-color: dodgerblue;
     color: white;
 }
-.konten_admin{
+.konten_admin, .konten_user{
     background-color: #fff;
     padding: 10px;
 }
@@ -71,14 +71,76 @@ nav{
     background-color: gainsboro;
     padding: 10px;
 }
+/*user*/
+.search-bar{
+    background-color: black;
+    color: white;
+    border: 1px solid darkgrey;
+    min-width: 200px;
+}
+.search-bar:focus{
+    background-color: black;
+    color: white;
+    border: 1px solid darkgrey;
+}
 
+.konten-utama{
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+.recommend-anime{
+    border: 1px solid gainsboro;
+}
+.sub-judul{
+    border: 7px solid gainsboro;
+    font-weight: bold;
+    padding: 1px;
+}
+.thumbnail-anime {
+    position: relative;
+    display: inline;
+    width: 150px;
+    overflow: hidden;
+}
+.thumbnail-anime img{
+    width: 150px;
+}
+.caption {
+    position: absolute;
+    padding-bottom: 0px;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    opacity: 0.8;
+}
 
+.thumb-episode{
+    width: 100%;
+    max-height: 100px;
+}
+.ket-episode{
+    background-color: gainsboro;
+    padding: 10px;
+    height: 100%;
+}
+.judul-ket-episode{
+    font-weight: bold;
+    color: black;
+}
 
 @media screen and (max-width: 1024px) {
     .konten_data{
         overflow-x: scroll;
     }
+    .container{
+        margin-left: 2px;
+        min-width: 100%;
+    }
 }
+
 @media screen and (max-width: 480px) {
     .block{
         width: auto;
@@ -86,16 +148,5 @@ nav{
         height: auto;
         position: static;
     }
-    .multi-kolom-4{
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
-}
-@media screen and (max-width: 360px) {
-    .multi-kolom-4{
-        -webkit-column-count: 1;
-        -moz-column-count: 1;
-        column-count: 1;
-    }
+
 }

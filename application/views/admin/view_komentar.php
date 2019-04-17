@@ -79,4 +79,4 @@
     </div>
 </div>
 
-<a href="#" class="btn btn-primary rounded-circle user-admin-btn">Go to user view</a>
+<a href="<?= base_url() ?>user" class="btn btn-primary rounded-circle user-admin-btn">Go to user view</a>

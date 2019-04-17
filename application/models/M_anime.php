@@ -7,6 +7,23 @@ class M_anime extends CI_Model
         $que = $this->db->get('anime');
         return $que->result_array();
     }
+    public function getAllDataAnimeOrderBySkor()
+    {
+        $this->db->order_by('skor','dsc');
+        $que = $this->db->get('anime');
+        return $que->result_array();
+    }
+    public function getFeaturedAnime()
+    {
+        $this->db->order_by('skor','dsc');
+        $que = $this->db->get('anime', 6);
+        return $que->result_array();
+    }
+    public function getLatestSeriesAnime()
+    {
+        $que = $this->db->query("SELECT a.no_anime, a.judul_anime, a.gambar, e.no_episode,e.episode,e.thumbnail,e.tgl_rilis FROM anime a JOIN episode e ON a.no_anime = e.no_anime GROUP BY a.no_anime ORDER BY e.tgl_rilis LIMIT 10");
+        return $que->result_array();
+    }
     public function getDataAnimeByNo($no_anime)
     {
         $this->db->where('no_anime',$no_anime);

@@ -8,6 +8,12 @@ class M_episode extends CI_Model
         $que = $this->db->get('episode');
         return $que->result_array();
     }
+    
+    public function getEpisodePerAnimeOrderByTgl($number,$offset)
+    {
+        $que = $this->db->query("SELECT a.no_anime, a.judul_anime, a.gambar, e.no_episode,e.episode,e.thumbnail,e.tgl_rilis FROM anime a JOIN episode e ON a.no_anime = e.no_anime ORDER BY e.tgl_rilis LIMIT $number OFFSET $offset");
+        return $que->result_array();
+    }
 
     public function getJumlahEpisodeByAnime($no_anime)
     {
