@@ -58,6 +58,40 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function detail_anime($no_anime)
+    {
+        $data['title'] = base_url()."detail_anime/$no_anime";
+        $data['anime'] = $this->m_anime->getDataAnimeByNo($no_anime);
+        $data['genre'] = $this->m_genre->getGenre13();
+        $data['recommend_anime'] = $this->m_anime->getAllDataAnimeOrderBySkor();
+        $data['genre_anime'] = $this->m_genre->getGenreByAnime($no_anime);
+        $data['episode'] = $this->m_episode->getEpisodeByAnime($no_anime);
+        $data['jml_episode'] = $this->m_episode->getJumlahEpisodeByAnime($no_anime);
+        $this->load->view('templates/header', $data);
+        $this->load->view('user/detail_anime',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function nonton_episode($no_episode)
+    {
+        $data['title'] = base_url()."nonton_episode/$no_episode";
+        $data['genre'] = $this->m_genre->getGenre13();
+        $data['recommend_anime'] = $this->m_anime->getAllDataAnimeOrderBySkor();
+        $data['anime_episode'] = $this->m_episode->getDetailEpisodeAndAnime($this->input->get('no_anime', true),$no_episode);
+        $data['genre_anime'] = $this->m_genre->getGenreByAnime($this->input->get('no_anime', true));
+        $data['prev_episode'] = $this->m_episode->getPrevEpisode($no_episode, $this->input->get('no_anime',true));
+        $data['next_episode'] = $this->m_episode->getNextEpisode($no_episode, $this->input->get('no_anime',true));
+        $data['link_download'] = $this->m_link_download->getLinkByEpisode($no_episode);
+        $data['komentar'] = $this->m_komentar->getKomentarByEpisode($no_episode);
+        $this->load->view('templates/header', $data);
+        $this->load->view('user/nonton_episode',$data);
+        $this->load->view('templates/footer');
+    }
+    public function tambah_komentar($no_episode)
+    {
+        $this->m_komentar->tambah_komentar($no_episode);
+        redirect('user/nonton_episode/'.$no_episode.'?no_anime='.$this->input->get('no_anime',true));
+    }
 }
 
 

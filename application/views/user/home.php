@@ -8,7 +8,7 @@
         <a class="nav-item nav-link" href="<?= base_url() ?>user/faq">FAQ</a>
         <a class="nav-item nav-link" href="<?= base_url() ?>user/dmca">DMCA</a>
     </div>
-    <form action="" method="POST" class="form-inline my-2 my-lg-0">
+    <form action="<?= base_url() ?>user/search_anime" method="POST" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search">
     </form>
   </div>
@@ -17,7 +17,7 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-12">
-            <img src="<?= base_url(); ?>assets/gambar/logo.png" alt="logo" class="logo">
+            <a href="<?= base_url() ?>user"><img src="<?= base_url(); ?>assets/gambar/logo.png" alt="logo" class="logo"></a>
         </div>
     </div>
     <div class="row mt-5 konten_user">
@@ -27,11 +27,11 @@
                     <?php
                     foreach ($genre as $row) {
                     ?>
-                    <a href="" class="badge btn btn-outline-primary mr-2"><?= $row['nama_genre'] ?></a>
+                    <a href="<?= base_url() ?>user/anime_genre/<?= $row['no_genre'] ?>" class="badge btn btn-outline-primary mr-2"><?= $row['nama_genre'] ?></a>
                     <?php
                     }
                     ?>
-                    <a href="" class="badge btn btn-outline-primary mr-2">genre lainnya >>></a>
+                    <a href="<?= base_url() ?>user/genre" class="badge btn btn-outline-primary mr-2">genre lainnya >>></a>
                 </div>
             </div>
             <div class="row konten-utama mt-3">
@@ -41,7 +41,7 @@
                         <?php
                         foreach ($recommend_anime as $row) {
                         ?>
-                        <a href="" class="mr-2 text-dark"><?= $row['judul_anime'] ?></a>
+                        <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" class="mr-2 text-dark"><?= $row['judul_anime'] ?></a>
                         <?php
                         }
                         ?>
@@ -53,7 +53,7 @@
                     <?php
                         foreach ($featured_anime as $row) {
                         ?>
-                        <a href="" title="<?= $row['judul_anime'] ?>">
+                        <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" title="<?= $row['judul_anime'] ?>">
                         <div class="thumbnail-anime text-center mr-2" >
                             <img src="<?= base_url() ?>assets/gambar/<?= $row['gambar'] ?>" >
                             <div class="caption small">
@@ -74,13 +74,13 @@
                     <div class="mt-2">
                         <div class="row">
                             <div class="col-2">
-                                <a href=""><img src="<?= base_url() ?>assets/gambar/<?= $row['thumbnail'] ?>" class="thumb-episode mr-1"></a>
+                                <a href="<?= base_url() ?>user/nonton_episode/<?= $row['no_episode'] ?>?no_anime=<?= $row['no_anime'] ?>&episode=<?= $row['episode'] ?>"><img src="<?= base_url() ?>assets/gambar/<?= $row['thumbnail'] ?>" class="thumb-episode mr-1"></a>
                             </div>
                             <div class="col-10">
                                 <div class="ket-episode">
-                                    <a href="" class="judul-ket-episode"><?= $row['judul_anime'] ?> - <?= $row['episode'] ?> sub Indo</a> <br>
+                                    <a href="<?= base_url() ?>user/nonton_episode/<?= $row['no_episode'] ?>?no_anime=<?= $row['no_anime'] ?>&episode=<?= $row['episode'] ?>" class="judul-ket-episode"><?= $row['judul_anime'] ?> - <?= $row['episode'] ?> sub Indo</a> <br>
                                     <span class="small text-secondary">diupload tanggal <?= $row['tgl_rilis'] ?></span> <br>
-                                    <span class="small text-secondary">Lihat daftar isi <a href="" class="text-primary"><?= $row['judul_anime'] ?></a> untuk episode lainnya.</span>
+                                    <span class="small text-secondary">Lihat daftar isi <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" class="text-primary"><?= $row['judul_anime'] ?></a> untuk episode lainnya.</span>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <?php
                         foreach ($latest_anime as $row) {
                         ?>
-                         <a href="" title="<?= $row['judul_anime'] ?>">
+                         <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" title="<?= $row['judul_anime'] ?>">
                         <div class="thumbnail-anime text-center m-2" >
                             <img src="<?= base_url() ?>assets/gambar/<?= $row['gambar'] ?>" >
                             <div class="caption small">

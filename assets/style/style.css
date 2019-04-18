@@ -4,6 +4,9 @@
 body{
     background-color: gainsboro;
 }
+.light-toggle{
+    background-color: black;
+}
 footer{
     margin-top: 10px;
 }
@@ -130,7 +133,64 @@ nav, footer, genres{
     font-weight: bold;
     color: black;
 }
+.table-dark-hover tbody tr:hover{
+    background-color: rgb(70, 69, 69);
+    color: white;
+}
 
+.table-dark-hover tbody tr a{
+    color: inherit;
+}
+
+.btn-orange{
+    background-color: orangered;
+    color: white;
+}
+.btn-orange:hover{
+    background-color: rgb(201, 54, 0);
+    color: white;
+}
+.btn-grey{
+    background-color: #f4f4f4;
+    border: 1px solid #d8d8d8;
+}
+.btn-grey:hover{
+    background-color: gainsboro;
+    border: 1px solid #d8d8d8;
+}
+.next-prev-episode a{
+    font-weight: bold;
+}
+.download{
+    background-color: gainsboro;
+    padding: 20px;
+}
+.link_download{
+    background-color: rgb(165, 164, 164);
+}
+.link_download a{
+    color: rgb(97, 97, 97);
+    font-weight: bold;
+}
+.link_download a:hover{
+    color: black;
+    text-decoration: none;
+}
+.ket-thumb{
+    width: 150px;
+}
+.comment{
+    width: 100%;
+}
+.comment form, .comment form input[type=text], .comment form textarea{
+    width: 100%;
+    min-width: 100%;
+}
+.comment form textarea{
+    font-size: 20px;
+    padding: 10px;
+
+}
 @media screen and (max-width: 1024px) {
     .konten_data{
         overflow-x: scroll;

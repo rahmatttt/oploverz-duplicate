@@ -237,10 +237,8 @@
                                 </ul>
                             </td>
                             <td>
-                                <video width="100px" controls>
-                                    <source src="<?= $row_episode['link_streaming'] ?>" type="video/mp4">
-                                    Your browser does not support the video.
-                                </video>
+                                
+                                <iframe src="<?= $row_episode['link_streaming'] ?>" width="100" height="50"></iframe>
                             </td>
                             <td>
                             <a href="<?= base_url(); ?>admin/edit_episode/<?= $row_episode['no_episode']?>?no_anime=<?= $row['no_anime'] ?>" class="btn btn-warning text-light m-1" title="edit"><span class="oi oi-pencil"></span></a>

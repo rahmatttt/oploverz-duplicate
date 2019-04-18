@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/style/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/script/datatable/datatables.css">
     <script src="<?= base_url() ?>assets/script/upload.js"></script>
+    <script src="<?= base_url() ?>assets/script/light-toggle.js"></script>
     <script src="<?= base_url() ?>assets/script/ckeditor/ckeditor/ckeditor.js"></script>
     <script src="<?= base_url() ?>assets/script/datatable/datatables.js"></script>
     <script>
@@ -21,4 +22,4 @@
         } );
     </script>
     </head>
-<body>
+<body class="">
