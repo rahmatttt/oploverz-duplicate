@@ -14,6 +14,12 @@ class M_episode extends CI_Model
         $que = $this->db->query("SELECT a.no_anime, a.judul_anime, a.gambar, e.no_episode,e.episode,e.thumbnail,e.tgl_rilis FROM anime a JOIN episode e ON a.no_anime = e.no_anime ORDER BY e.tgl_rilis LIMIT $number OFFSET $offset");
         return $que->result_array();
     }
+    public function getFindEpisodePerAnimeOrderByTgl()
+    {
+        $search = $this->input->post('search',true);
+        $que = $this->db->query("SELECT a.no_anime, a.judul_anime, a.gambar, e.no_episode,e.episode,e.thumbnail,e.tgl_rilis FROM anime a JOIN episode e ON a.no_anime = e.no_anime WHERE a.judul_anime LIKE '%$search%' ORDER BY e.tgl_rilis");
+        return $que->result_array();
+    }
     public function getDetailEpisodeAndAnime($no_anime,$no_episode)
     {
         $que = $this->db->query("SELECT a.no_anime, a.judul_anime, a.gambar, a.status, a.durasi, a.deskripsi, e.no_episode,e.episode,e.thumbnail,e.tgl_rilis, e.link_streaming FROM anime a JOIN episode e ON a.no_anime = e.no_anime WHERE a.no_anime = $no_anime AND e.no_episode = $no_episode");

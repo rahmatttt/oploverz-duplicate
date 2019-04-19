@@ -70,6 +70,11 @@ nav, footer, genres{
     column-count: 4;
 }
 
+.multi-kolom-2{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
 .profil_anime{
     background-color: gainsboro;
     padding: 10px;
@@ -178,6 +183,7 @@ nav, footer, genres{
 }
 .ket-thumb{
     width: 150px;
+    min-height: 216px;
 }
 .comment{
     width: 100%;
@@ -190,6 +196,32 @@ nav, footer, genres{
     font-size: 20px;
     padding: 10px;
 
+}
+.card{
+    border: none;
+}
+.card-tambahan{
+    display: block;
+    overflow: hidden;
+}
+
+.card-thumbnail, .card-isi{
+    float: left;
+}
+
+.card-thumbnail{
+    width: 150px;
+}
+
+.card-thumbnail img{
+    width: 100%;
+    display: block;
+    height: 150px;
+}
+
+.card-isi{
+    width: 70%;
+    padding-left: 10px;
 }
 @media screen and (max-width: 1024px) {
     .konten_data{

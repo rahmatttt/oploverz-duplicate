@@ -46,30 +46,11 @@
                         }
                         ?>
                     </div>
-                    <div class="sub-judul mt-2">
-                        <span>Featured Series</span>
-                    </div>
-                    <div class="mt-2">
-                    <?php
-                        foreach ($recommend_anime as $row) {
-                        ?>
-                        <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" title="<?= $row['judul_anime'] ?>">
-                        <div class="thumbnail-anime text-center mr-2" >
-                            <img src="<?= base_url() ?>assets/gambar/<?= $row['gambar'] ?>" >
-                            <div class="caption small">
-                                <span><?= $row['judul_anime'] ?></span>
-                            </div>
-                        </div>
-                        </a>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                    <div class="sub-judul mt-2">
-                        <span>Rilis Terbaru</span>
+                    <div class="mt-2 sub-judul">
+                        <span>Result From "<?= $found ?>"</span>
                     </div>
                     <?php
-                    foreach ($newest_episode as $row) {
+                    foreach ($found_episode as $row) {
                     ?>
                     <div class="mt-2">
                         <div class="row">
@@ -87,27 +68,8 @@
                     </div>
                     <?php
                     }
-                    echo "<hr>".$this->pagination->create_links();
                     ?>
-                    <div class="sub-judul mt-2">
-                        <span>Latest Series</span>
-                    </div>
-                    <div class="mt-2">
-                        <?php
-                        foreach ($latest_anime as $row) {
-                        ?>
-                         <a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>" title="<?= $row['judul_anime'] ?>">
-                        <div class="thumbnail-anime text-center m-2" >
-                            <img src="<?= base_url() ?>assets/gambar/<?= $row['gambar'] ?>" >
-                            <div class="caption small">
-                                <span><?= $row['judul_anime'] ?></span>
-                            </div>
-                        </div>
-                        </a>
-                        <?php
-                        }
-                        ?>
-                    </div>
+                    
                 </div>
             </div>
         </div>

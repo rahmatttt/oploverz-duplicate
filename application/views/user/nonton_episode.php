@@ -9,7 +9,7 @@
         <a class="nav-item nav-link" href="<?= base_url() ?>user/dmca">DMCA</a>
     </div>
     <form action="<?= base_url() ?>user/search_anime" method="POST" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search" name="search">
     </form>
   </div>
 </nav>
@@ -27,7 +27,7 @@
                     <?php
                     foreach ($genre as $row) {
                     ?>
-                    <a href="<?= base_url() ?>user/anime_genre/<?= $row['no_genre'] ?>" class="badge btn btn-outline-primary mr-2"><?= $row['nama_genre'] ?></a>
+                    <a href="<?= base_url() ?>user/anime_genre/<?= $row['no_genre'] ?>?nama_genre=<?= $row['nama_genre'] ?>" class="badge btn btn-outline-primary mr-2"><?= $row['nama_genre'] ?></a>
                     <?php
                     }
                     ?>
@@ -117,7 +117,7 @@
                                 <?php
                                 foreach ($link_download as $row) {
                                 ?>
-                                <a href="<?= $row['link'] ?>"><?= $row['nama_link'] ?></a><span> | </span>
+                                <a href="<?= $row['link'] ?>" target="_blank"><?= $row['nama_link'] ?></a><span> | </span>
                                 <?php    
                                 }
                                 ?>
