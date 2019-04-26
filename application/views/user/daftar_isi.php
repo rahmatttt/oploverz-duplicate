@@ -66,7 +66,7 @@
                         <?php
                         foreach ($not_alpha as $row) {
                         ?>
-                        <dd><a href=""><?= $row['judul_anime'] ?></a></dd>
+                        <dd><a href="<?= base_url() ?>user/detail_anime/<?= $row['no_anime'] ?>"><?= $row['judul_anime'] ?></a></dd>
                         <?php
                         }
                         ?>
